@@ -54,7 +54,7 @@ class TimeWeightedVectorStoreRetriever(BaseRetriever, BaseModel):
         current_time: datetime.datetime,
     ) -> float:
         """Return the combined score for a document."""
-        print("Last accessed: ", document.metadata["last_accessed_at"])
+        # print("Last accessed: ", document.metadata["last_accessed_at"])
         hours_passed = _get_hours_passed(
             current_time,
             document.metadata["last_accessed_at"],

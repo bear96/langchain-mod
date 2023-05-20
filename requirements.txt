@@ -1,0 +1,10 @@
+pydantic
+tenacity
+openapi_schema_pydantic
+sqlalchemy
+numexpr
+mypy_extensions
+faiss-cpu
+termcolor
+openai
+tiktoken
