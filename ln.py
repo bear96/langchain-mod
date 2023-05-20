@@ -15,8 +15,7 @@ import faiss
 #pydantic, tenacity, openapi_schema_pydantic, sqlalchemy, numexpr, mypy_extensions
 
 USER_NAME = "Person A" # The name you want to use when interviewing the agent.
-# openai.openai_api_key = "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"
-LLM = ChatOpenAI(openai_api_key = "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",
+LLM = ChatOpenAI(openai_api_key = "",
                  temperature=0.5, max_tokens=1500) # Can be any LLM you want.
 
 
@@ -34,7 +33,7 @@ def relevance_score_fn(score: float) -> float:
 def create_new_memory_retriever():
     """Create a new vector store retriever unique to the agent."""
     # Define your embedding model
-    embeddings_model = OpenAIEmbeddings(openai_api_key="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")
+    embeddings_model = OpenAIEmbeddings(openai_api_key="")
     # Initialize the vectorstore as empty
     embedding_size = 1536
     index = faiss.IndexFlatL2(embedding_size)
