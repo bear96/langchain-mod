@@ -128,7 +128,7 @@ class GenerativeAgentMemory(BaseMemory):
             return 0.0
 
     def add_memory(
-        self, memory_content: str, now: Optional[datetime] = None
+        self, memory_content: str, now: Optional[datetime] = datetime.now()
     ) -> List[str]:
         """Add an observation or memory to the agent's memory."""
         importance_score = self._score_memory_importance(memory_content)

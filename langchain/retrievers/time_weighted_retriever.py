@@ -11,7 +11,6 @@ from langchain.vectorstores.base import VectorStore
 
 def _get_hours_passed(time: datetime.datetime, ref_time: datetime.datetime) -> float:
     """Get the hours passed between two datetime objects."""
-    print("current time: {} reference time: {}".format(time,ref_time))
     return (time - ref_time).total_seconds() / 3600
 
 
@@ -55,6 +54,7 @@ class TimeWeightedVectorStoreRetriever(BaseRetriever, BaseModel):
         current_time: datetime.datetime,
     ) -> float:
         """Return the combined score for a document."""
+        print("Last accessed: ", document.metadata["last_accessed_at"])
         hours_passed = _get_hours_passed(
             current_time,
             document.metadata["last_accessed_at"],
