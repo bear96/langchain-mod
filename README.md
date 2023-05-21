@@ -1,1 +1,1 @@
-Cloned from origina [Langchain project](https://github.com/hwchase17/langchain)
+Cloned from original [Langchain project](https://github.com/hwchase17/langchain)
