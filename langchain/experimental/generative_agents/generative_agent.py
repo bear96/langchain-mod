@@ -215,6 +215,7 @@ Relevant context:
             farewell = self._clean_response(result.split("GOODBYE:")[-1])
             return False, f"{self.name} said {farewell}"
         if "SAY:" in result:
+            response_text = self._clean_response(result.split("SAY:")[-1])
             return True, f"{self.name} said {response_text}"
         else:
             return False, result 
