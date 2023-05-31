@@ -103,7 +103,7 @@ Relevant context:
             + "\n\n"
             + suffix
         )
-        agent_summary_description = self.get_summary(now=now)
+        agent_summary_description = self.get_summary(force_refresh = True,now=now)
         relevant_memories_str = self.summarize_related_memories(observation)
         current_time_str = (
             datetime.now().strftime("%B %d, %Y, %I:%M %p")
