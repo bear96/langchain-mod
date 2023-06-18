@@ -61,6 +61,7 @@ class GenerativeAgent(BaseModel):
             "What is the observed entity in the following observation? {observation}"
             + "\nEntity="
         )
+        print("get entity: ",self.chain(prompt).run(observation=observation).strip())
         return self.chain(prompt).run(observation=observation).strip()
 
     def _get_entity_action(self, observation: str, entity_name: str) -> str:
@@ -68,6 +69,7 @@ class GenerativeAgent(BaseModel):
             "What is the {entity} doing in the following observation? {observation}"
             + "\nThe {entity} is"
         )
+        print("get entity action: ",self.chain(prompt).run(entity=entity_name, observation=observation).strip())
         return (
             self.chain(prompt).run(entity=entity_name, observation=observation).strip()
         )
@@ -86,7 +88,8 @@ Relevant context:
         entity_action = self._get_entity_action(observation, entity_name)
         q1 = f"What is the relationship between {self.name} and {entity_name}"
         q2 = f"{entity_name} is {entity_action}"
-        print(self.chain(prompt=prompt).run(q1=q1, queries=[q1, q2]).strip())
+        print("Summarize_related_memories: ",self.chain(prompt=prompt).run(q1=q1, queries=[q1, q2]).strip())
+        print("summarize prompt: ",prompt)
         return self.chain(prompt=prompt).run(q1=q1, queries=[q1, q2]).strip()
 
     def _generate_reaction(
@@ -237,6 +240,9 @@ Relevant context:
             + "\n\nSummary: "
         )
         # The agent seeks to think about their core characteristics.
+        print("agent_summary as computed from prompt: ",self.chain(prompt)
+            .run(name=self.name, queries=[f"{self.name}'s core characteristics"])
+            .strip())
         return (
             self.chain(prompt)
             .run(name=self.name, queries=[f"{self.name}'s core characteristics"])
