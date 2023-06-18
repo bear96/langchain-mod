@@ -86,6 +86,7 @@ Relevant context:
         entity_action = self._get_entity_action(observation, entity_name)
         q1 = f"What is the relationship between {self.name} and {entity_name}"
         q2 = f"{entity_name} is {entity_action}"
+        print(self.chain(prompt=prompt).run(q1=q1, queries=[q1, q2]).strip())
         return self.chain(prompt=prompt).run(q1=q1, queries=[q1, q2]).strip()
 
     def _generate_reaction(
