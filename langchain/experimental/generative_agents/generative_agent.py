@@ -61,7 +61,6 @@ class GenerativeAgent(BaseModel):
             "What is the observed entity in the following observation? {observation}"
             + "\nEntity="
         )
-        print("get entity: ",self.chain(prompt).run(observation=observation).strip())
         return self.chain(prompt).run(observation=observation).strip()
 
     def _get_entity_action(self, observation: str, entity_name: str) -> str:
@@ -69,7 +68,6 @@ class GenerativeAgent(BaseModel):
             "What is the {entity} doing in the following observation? {observation}"
             + "\nThe {entity} is"
         )
-        print("get entity action: ",self.chain(prompt).run(entity=entity_name, observation=observation).strip())
         return (
             self.chain(prompt).run(entity=entity_name, observation=observation).strip()
         )
@@ -236,7 +234,7 @@ Relevant context:
             "How would you summarize {name}'s core characteristics given the"
             + " following statements:\n"
             + "{relevant_memories}"
-            + "Do not embellish."
+            + "\nDo not embellish."
             + "\n\nSummary: "
         )
         # The agent seeks to think about their core characteristics.
